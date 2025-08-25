@@ -1,4 +1,13 @@
-import { Clock, IdCard, DollarSign, Truck, MapPin, Plane } from "lucide-react";
+import {
+  Clock,
+  IdCard,
+  DollarSign,
+  Truck,
+  MapPin,
+  Plane,
+  ShieldAlert,
+  Wallet,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
@@ -52,28 +61,31 @@ export default function Hero() {
             className="w-full sm:w-fit flex justify-center items-center px-6 py-2.5 rounded-full border border-gray hover:bg-gray-100 transition-colors duration-300 cursor-pointer"
             data-testid="badge-time-saved"
           >
-            <Clock className="mr-2 h-6 w-6 text-gray" />
+            <Clock className="mr-2 h-6 w-6 text-gray" strokeWidth={1.5} />
             <span className=" text-gray">Up to 12h saved</span>
           </div>
           <div
             className="w-full sm:w-fit flex justify-center items-center px-6 py-2.5 rounded-full border border-gray hover:bg-gray-100 transition-colors duration-300 cursor-pointer"
             data-testid="badge-fewer-visas"
           >
-            <IdCard className=" mr-2 h-6 w-6 text-gray" />
+            <ShieldAlert
+              className=" mr-2 h-6 w-6 text-gray"
+              strokeWidth={1.5}
+            />
             <span className=" text-gray">Fewer visas</span>
           </div>
           <div
             className="w-full sm:w-fit flex justify-center items-center px-6 py-2.5 rounded-full border border-gray hover:bg-gray-100 transition-colors duration-300 cursor-pointer"
             data-testid="badge-lower-cost"
           >
-            <DollarSign className=" mr-2 h-6 w-6 text-gray" />
+            <Wallet className=" mr-2 h-6 w-6 text-gray" strokeWidth={1.5} />
             <span className=" text-gray">Lower total cost</span>
           </div>
           <div
             className="w-full sm:w-fit flex justify-center items-center px-6 py-2.5 rounded-full border border-gray hover:bg-gray-100 transition-colors duration-300 cursor-pointer"
             data-testid="badge-cargo-capacity"
           >
-            <Truck className=" mr-2 h-6 w-6 text-gray" />
+            <Truck className=" mr-2 h-6 w-6 text-gray" strokeWidth={1.5} />
             <span className="text-gray">Cargo belly capacity</span>
           </div>
         </div>

@@ -1,4 +1,15 @@
-import { Gauge, Route, PiggyBank, Handshake, Plane, Ship } from "lucide-react";
+import {
+  Gauge,
+  Route,
+  PiggyBank,
+  Handshake,
+  Plane,
+  Ship,
+  Clock,
+  ShieldAlert,
+  Wallet,
+  Globe,
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Advantages() {
@@ -33,7 +44,7 @@ export default function Advantages() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-[#D0FFF1] rounded-full flex items-center justify-center mb-6">
-                <Gauge className="text-[#059669] h-6 w-6" />
+                <Clock className="text-[#059669] h-6 w-6" strokeWidth={1.5} />
               </div>
               <div>
                 <h3
@@ -60,7 +71,10 @@ export default function Advantages() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-[#D0FFF1] rounded-full flex items-center justify-center mb-6">
-                <Route className="text-[#059669] h-6 w-6" />
+                <ShieldAlert
+                  className="text-[#059669] h-6 w-6"
+                  strokeWidth={1.5}
+                />
               </div>
               <div>
                 <h3
@@ -87,7 +101,7 @@ export default function Advantages() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-[#D0FFF1] rounded-full flex items-center justify-center mb-6">
-                <PiggyBank className="text-[#059669] h-6 w-6" />
+                <Wallet className="text-[#059669] h-6 w-6" strokeWidth={1.5} />
               </div>
               <div>
                 <h3
@@ -114,7 +128,7 @@ export default function Advantages() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-[#D0FFF1] rounded-full flex items-center justify-center mb-6">
-                <Handshake className="text-[#059669] h-6 w-6" />
+                <Globe className="text-[#059669] h-6 w-6" strokeWidth={1.5} />
               </div>
               <div>
                 <h3
@@ -141,7 +155,7 @@ export default function Advantages() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-[#D0FFF1] rounded-full flex items-center justify-center mb-6">
-                <Plane className="text-[#059669] h-6 w-6" />
+                <Plane className="text-[#059669] h-6 w-6" strokeWidth={1.5} />
               </div>
               <div>
                 <h3
@@ -168,7 +182,7 @@ export default function Advantages() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-[#D0FFF1] rounded-full flex items-center justify-center mb-6">
-                <Ship className="text-[#059669] h-6 w-6" />
+                <Ship className="text-[#059669] h-6 w-6" strokeWidth={1.5} />
               </div>
               <div>
                 <h3

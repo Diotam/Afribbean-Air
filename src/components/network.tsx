@@ -74,7 +74,10 @@ export default function Network() {
             >
               <CardContent className="p-6 flex items-start gap-3.5">
                 <div className="min-w-9 min-h-9 bg-[#D0FFF1] rounded-full flex items-center justify-center">
-                  <MapPin className="text-[#059669] h-5 w-5" />
+                  <MapPin
+                    className="text-[#059669] h-5 w-5"
+                    strokeWidth={1.5}
+                  />
                 </div>
                 <div className="flex-1">
                   <div className="mb-2">

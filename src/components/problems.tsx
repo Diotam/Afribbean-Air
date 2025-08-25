@@ -1,4 +1,4 @@
-import { Clock, IdCard, DollarSign } from "lucide-react";
+import { Clock, IdCard, DollarSign, Wallet, ShieldAlert } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Problems() {
@@ -34,7 +34,10 @@ export default function Problems() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-bg-danger rounded-full flex items-center justify-center mb-6">
-                <Clock className="text-color-danger h-6 w-6" />
+                <Clock
+                  className="text-color-danger h-6 w-6"
+                  strokeWidth={1.5}
+                />
               </div>
               <div>
                 <h3
@@ -57,7 +60,10 @@ export default function Problems() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-bg-danger rounded-full flex items-center justify-center mb-6">
-                <IdCard className="text-color-danger h-6 w-6" />
+                <ShieldAlert
+                  className="text-color-danger h-6 w-6"
+                  strokeWidth={1.5}
+                />
               </div>
               <div>
                 <h3
@@ -80,7 +86,10 @@ export default function Problems() {
           >
             <CardContent className="p-8 flex items-start gap-3.5">
               <div className="min-w-9 min-h-9 bg-bg-danger rounded-full flex items-center justify-center mb-6">
-                <DollarSign className="text-color-danger h-6 w-6" />
+                <Wallet
+                  className="text-color-danger h-6 w-6"
+                  strokeWidth={1.5}
+                />
               </div>
               <div>
                 <h3
