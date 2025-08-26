@@ -1,0 +1,428 @@
+import { useEffect, useState, useId } from "react";
+import { motion } from "framer-motion";
+import { Plane, Clock, Wallet, Globe2, ArrowRight, MapPin, Ship, ShieldAlert } from "lucide-react";
+
+const logoSrc = "sandbox:/mnt/data/ChatGPT Image Aug 7, 2025, 08_15_00 PM.png";
+
+export default function AfribbeanAirLanding() {
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    document.title = "Afribbean Air — Directly Connecting the Caribbean, Africa & South America";
+    document.documentElement.classList.add("scroll-smooth");
+  }, []);
+
+  const sectionFade = {
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const email = new FormData(e.currentTarget).get("email");
+    if (!String(email).includes("@")) return alert("Please enter a valid email.");
+    setSubmitted(true);
+  }
+
+  return (
+    <div className="min-h-screen text-slate-900 bg-white relative overflow-x-hidden">
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute -top-40 -left-24 h-[60vh] w-[60vh] rounded-full bg-gradient-to-br from-emerald-300 via-teal-300 to-cyan-300 blur-3xl opacity-40" />
+        <div className="absolute top-1/3 -right-24 h-[55vh] w-[55vh] rounded-full bg-gradient-to-tr from-amber-200 via-orange-200 to-rose-200 blur-3xl opacity-50" />
+        <NoiseOverlay />
+        <PalmBackdrop />
+      </div>
+
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mt-4 flex items-center justify-between rounded-2xl bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 border border-white/40 shadow-sm p-2 pl-3">
+            <a href="#home" className="flex items-center gap-3">
+              <img src={logoSrc} alt="Afribbean Air logo" className="h-10 w-10 rounded-full ring-2 ring-emerald-500/30 bg-white object-contain" onError={(e)=>{e.currentTarget.style.display='none'}}/>
+              <div className="flex flex-col leading-none">
+                <span className="text-xl font-semibold tracking-tight">Afribbean Air</span>
+                <span className="text-[11px] uppercase tracking-[0.16em] text-slate-600">Caribbean • Africa • South America</span>
+              </div>
+            </a>
+            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
+              <a href="#problem" className="hover:text-emerald-700">Problem</a>
+              <a href="#solution" className="hover:text-emerald-700">Benefits</a>
+              <a href="#network" className="hover:text-emerald-700">Network</a>
+              <a href="#experience" className="hover:text-emerald-700">Experience</a>
+            </nav>
+            <div className="flex items-center gap-2">
+              <a href="#waitlist" className="inline-flex items-center gap-2 rounded-xl border border-emerald-600 px-3 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50">
+                Join Waitlist <ArrowRight className="size-4"/>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="snap-y snap-mandatory">
+        <section id="home" className="snap-start min-h-screen flex items-center">
+          <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8 pt-32 pb-20">
+            <motion.div variants={sectionFade} initial="hidden" animate="show" className="relative">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/70 ring-1 ring-slate-200 px-2 py-1 text-xs font-semibold text-emerald-700">
+                <Plane className="size-3"/> Nonstop is the new bridge
+              </span>
+              <h1 className="mt-4 text-5xl font-extrabold tracking-tight leading-tight text-slate-900">
+                Directly connecting the <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">Caribbean</span>, {" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-cyan-600">Africa</span> & {" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600">South America</span>
+              </h1>
+              <p className="mt-5 text-lg leading-relaxed text-slate-700">
+                Today, travelers zig‑zag through distant hubs, adding visas, layovers and days of lost time. Afribbean Air brings the regions together with efficient, sustainable, {" "}
+                <strong>direct routes</strong> that turn long detours into same‑day journeys.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a href="#waitlist" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-600 px-5 py-3 text-white font-semibold shadow hover:bg-emerald-700">
+                  Get Early Access <ArrowRight className="size-4"/>
+                </a>
+                <a href="#network" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-emerald-700 font-semibold ring-1 ring-emerald-200 hover:bg-emerald-50">
+                  See Route Vision
+                </a>
+              </div>
+              <HeroHighlights />
+            </motion.div>
+
+            <motion.div variants={sectionFade} initial="hidden" animate="show" className="relative">
+              <WorldRoutesSVG />
+            </motion.div>
+          </div>
+          <ScrollCue/>
+        </section>
+
+        <section id="problem" className="snap-start min-h-screen flex items-center bg-white/70">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
+            <motion.div variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+              <div className="max-w-2xl">
+                <h2 className="text-4xl font-bold tracking-tight">The problem with current travel</h2>
+                <p className="mt-4 text-slate-700 text-lg">Caribbean–Africa–South America journeys often require 2–3 connections through the US or Europe, creating cost, visa, and time barriers.</p>
+              </div>
+
+              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <ProblemCard icon={<Clock className="size-5"/>} title="Lost time">
+                  Up to <strong>10–24 hours</strong> added from multi‑stop itineraries and overnight layovers.
+                </ProblemCard>
+                <ProblemCard icon={<ShieldAlert className="size-5"/>} title="Transit visa hurdles">
+                  Many travelers need <strong>extra visas</strong> to simply change planes in the US/EU, blocking trips entirely.
+                </ProblemCard>
+                <ProblemCard icon={<Wallet className="size-5"/>} title="Higher total cost">
+                  Detours mean extra taxes, hotels, and fees—raising fares and squeezing trade & tourism.
+                </ProblemCard>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section id="solution" className="snap-start min-h-screen flex items-center">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
+            <motion.div variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+              <div className="max-w-2xl">
+                <h2 className="text-4xl font-bold tracking-tight">The direct advantage</h2>
+                <p className="mt-4 text-slate-700 text-lg">Nonstop regional bridges unlock growth for people and commerce across the Atlantic tropics.</p>
+              </div>
+
+              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <BenefitCard icon={<Clock className="size-5"/>} title="Faster door‑to‑door">
+                  Save <strong>6–12+ hours</strong> vs. detours. Same‑day arrivals for business, family, and events.
+                </BenefitCard>
+                <BenefitCard icon={<ShieldAlert className="size-5"/>} title="Simpler travel">
+                  Avoid common <strong>transit‑visa</strong> requirements, fewer touchpoints, and stress‑free connections.
+                </BenefitCard>
+                <BenefitCard icon={<Wallet className="size-5"/>} title="Lower total cost">
+                  Efficient single‑aisle aircraft and shorter trips reduce fares and ancillary costs.
+                </BenefitCard>
+                <BenefitCard icon={<Globe2 className="size-5"/>} title="Trade & diaspora links">
+                  Belly cargo and direct access grow SME trade, culture, and tourism across the regions.
+                </BenefitCard>
+                <BenefitCard icon={<Plane className="size-5"/>} title="Right‑sized fleet">
+                  Modern A220/A321LR‑XLR range enables smart point‑to‑point routes with excellent comfort.
+                </BenefitCard>
+                <BenefitCard icon={<Ship className="size-5"/>} title="Seamless sea‑air logistics">
+                  Pairing with ports shortens supply chains for perishables and e‑commerce.
+                </BenefitCard>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section id="network" className="snap-start min-h-screen flex items-center bg-white/70">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
+            <motion.div variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+              <div className="max-w-3xl">
+                <h2 className="text-4xl font-bold tracking-tight">Pilot network vision</h2>
+                <p className="mt-4 text-slate-700 text-lg">Illustrative nonstop links to collapse travel times and open new markets. Final network subject to regulatory approvals and demand.</p>
+              </div>
+              <div className="mt-10 grid lg:grid-cols-2 gap-10 items-center">
+                <div className="order-2 lg:order-1 grid gap-4">
+                  <RouteRow from="Barbados (BGI)" to="Dakar, Senegal (DSS)" time="~6h 30m" note="West Africa gateway"/>
+                  <RouteRow from="Georgetown, Guyana (GEO)" to="Freetown, Sierra Leone (FNA)" time="~6h 50m" note="Mining & diaspora"/>
+                  <RouteRow from="Port of Spain, Trinidad (POS)" to="Accra, Ghana (ACC)" time="~7h 20m" note="Energy & culture"/>
+                  <RouteRow from="Paramaribo, Suriname (PBM)" to="Praia, Cabo Verde (RAI)" time="~5h 50m" note="Atlantic hub"/>
+                </div>
+                <div className="order-1 lg:order-2"><WorldRoutesSVG emphasis/></div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section id="experience" className="snap-start min-h-screen flex items-center">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
+            <motion.div variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+              <div className="max-w-3xl">
+                <h2 className="text-4xl font-bold tracking-tight">Comfort built for long narrow‑body hops</h2>
+                <p className="mt-4 text-slate-700 text-lg">Spacious cabins, Caribbean hospitality, and regionally curated meals keep the journey fresh and productive.</p>
+              </div>
+
+              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <FeatureCard title="A220/A321 interiors">Wider seats, larger windows, lower noise and modern mood lighting.</FeatureCard>
+                <FeatureCard title="Wi‑Fi + power at every seat">Stream, work, and call home with gate‑to‑gate connectivity.</FeatureCard>
+                <FeatureCard title="Tropical cuisine & wellness">Hydrating menus, Caribbean flavors, and stretch‑friendly service flows.</FeatureCard>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section id="waitlist" className="snap-start">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+            <motion.div variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="rounded-3xl border border-emerald-200 bg-white/80 p-10 shadow-sm">
+              <div className="grid lg:grid-cols-3 gap-8 items-center">
+                <div className="lg:col-span-2">
+                  <h3 className="text-3xl font-bold tracking-tight">Be first to know</h3>
+                  <p className="mt-2 text-slate-700">Join the insider list for launch routes, fares, and partnerships.</p>
+                  <form onSubmit={handleSubmit} className="mt-6 flex flex-col sm:flex-row gap-3">
+                    <input type="email" name="email" required placeholder="Your email" className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"/>
+                    <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-white font-semibold shadow hover:bg-emerald-700">
+                      Join waitlist <ArrowRight className="size-4"/>
+                    </button>
+                  </form>
+                  {submitted && (
+                    <p className="mt-3 text-emerald-700 font-medium">Thanks! You're on the list — we'll be in touch soon.</p>
+                  )}
+                </div>
+                <div className="flex items-center justify-center">
+                  <img src={logoSrc} alt="Afribbean Air logo" className="h-36 w-36 rounded-full ring-4 ring-emerald-500/30 bg-white object-contain" onError={(e)=>{e.currentTarget.style.display='none'}}/>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-slate-200 bg-white/80">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <img src={logoSrc} alt="Afribbean Air logo" className="h-8 w-8 rounded-full ring-2 ring-emerald-500/30 bg-white object-contain" onError={(e)=>{e.currentTarget.style.display='none'}}/>
+            <span className="text-sm font-semibold">© {new Date().getFullYear()} Afribbean Air</span>
+          </div>
+          <div className="text-sm text-slate-600">Made for the Atlantic tropics • Privacy • Careers • Partnerships</div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function ProblemCard({ icon, title, children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      className="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur"
+    >
+      <div className="flex items-start gap-3">
+        <div className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-rose-50 text-rose-700 ring-1 ring-rose-200">
+          {icon}
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold">{title}</h3>
+          <p className="mt-1 text-slate-700">{children}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function BenefitCard({ icon, title, children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      className="rounded-2xl border border-emerald-200 bg-white/80 p-6 shadow-sm backdrop-blur"
+    >
+      <div className="flex items-start gap-3">
+        <div className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200">
+          {icon}
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold">{title}</h3>
+          <p className="mt-1 text-slate-700">{children}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function FeatureCard({ title, children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      className="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm"
+    >
+      <h3 className="text-lg font-semibold">{title}</h3>
+      <p className="mt-1 text-slate-700">{children}</p>
+    </motion.div>
+  );
+}
+
+function RouteRow({ from, to, time, note }) {
+  return (
+    <div className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white/70 p-4">
+      <div className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-50 text-cyan-700 ring-1 ring-cyan-200"><MapPin className="size-5"/></div>
+      <div className="flex-1">
+        <div className="flex flex-wrap gap-2 items-center text-slate-900 font-semibold">
+          <span>{from}</span>
+          <ArrowRight className="size-4 opacity-60"/>
+          <span>{to}</span>
+        </div>
+        <div className="mt-1 text-sm text-slate-600">Block time {time} • {note}</div>
+      </div>
+    </div>
+  );
+}
+
+function HeroHighlights() {
+  const items = [
+    { label: "Up to 12h saved", icon: <Clock className="size-4"/> },
+    { label: "Fewer visas", icon: <ShieldAlert className="size-4"/> },
+    { label: "Lower total cost", icon: <Wallet className="size-4"/> },
+    { label: "Cargo belly capacity", icon: <Ship className="size-4"/> },
+  ];
+  return (
+    <ul className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {items.map((it, i) => (
+        <li key={i} className="flex items-center gap-2 rounded-xl bg-white/70 px-3 py-2 text-sm ring-1 ring-slate-200">
+          <span className="text-emerald-700">{it.icon}</span>
+          <span className="font-medium text-slate-800">{it.label}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function WorldRoutesSVG({ emphasis=false }) {
+  const oceanId = useId();
+  const routeId = useId();
+  const shadowId = useId();
+  const routeRef = `url(#${routeId})`;
+  return (
+    <svg viewBox="0 0 800 480" role="img" aria-label="Outline map with route lines" className="w-full h-[360px] md:h-[460px] rounded-3xl border border-slate-200 bg-white/60 shadow-sm">
+      <defs>
+        <radialGradient id={oceanId} cx="50%" cy="45%" r="75%">
+          <stop offset="0%" stopColor="#f0fdfa"/>
+          <stop offset="100%" stopColor="#ccfbf1"/>
+        </radialGradient>
+        <linearGradient id={routeId} x1="0" x2="1">
+          <stop offset="0%" stopColor={emphasis ? "#059669" : "#10b981"} />
+          <stop offset="100%" stopColor={emphasis ? "#0ea5e9" : "#22d3ee"} />
+        </linearGradient>
+        <filter id={shadowId} x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="1" stdDeviation="2" floodColor="#0c4a6e" floodOpacity=".12"/>
+        </filter>
+      </defs>
+
+      <rect x="0" y="0" width="800" height="480" fill={`url(#${oceanId})`}/>
+
+      <g fill="none" stroke="#0f766e" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" opacity="0.95" filter={`url(#${shadowId})`}>
+        <path d="M270,205 C290,190 320,175 350,185 C370,192 385,205 380,225 C374,245 368,257 369,280 C370,305 357,330 330,355 C305,378 270,368 260,346 C252,330 260,312 270,292 C278,276 279,260 282,245 C285,232 278,218 270,205 Z"/>
+        <path d="M260,182 C270,175 288,170 310,169 M300,178 C292,184 286,190 280,196 M325,175 C333,178 340,185 345,192"/>
+        <path d="M515,190 C525,170 560,165 590,175 C612,182 622,200 620,220 C617,238 607,255 596,275 C583,300 570,320 550,330 C535,338 520,334 512,320 C506,309 505,295 506,280 C507,262 510,246 512,232 C514,220 514,204 515,190 Z"/>
+      </g>
+
+      <g fill="#0f766e" stroke="#0f766e">
+        <circle cx="300" cy="190" r="4"/>
+        <circle cx="250" cy="260" r="4"/>
+        <circle cx="340" cy="200" r="4"/>
+        <circle cx="540" cy="240" r="4"/>
+        <circle cx="560" cy="260" r="4"/>
+        <circle cx="520" cy="260" r="4"/>
+        <circle cx="500" cy="220" r="4"/>
+      </g>
+
+      <RouteArc d="M300,190 C380,150 470,170 540,240" delay={0} strokeRef={routeRef}/>
+      <RouteArc d="M250,260 C350,200 450,220 520,260" delay={0.2} strokeRef={routeRef}/>
+      <RouteArc d="M340,200 C420,170 500,190 560,260" delay={0.4} strokeRef={routeRef}/>
+      <RouteArc d="M280,210 C380,150 460,160 500,220" delay={0.6} strokeRef={routeRef}/>
+    </svg>
+  );
+}
+
+function RouteArc({ d, delay = 0, strokeRef }) {
+  return (
+    <motion.path
+      d={d}
+      fill="none"
+      stroke={strokeRef}
+      strokeWidth="3"
+      strokeLinecap="round"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 2.2, ease: "easeInOut", delay }}
+    />
+  );
+}
+
+function ScrollCue() {
+  return (
+    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-slate-700">
+      <div className="text-xs font-medium">Scroll</div>
+      <motion.div
+        initial={{ y: 0, opacity: 0.7 }}
+        animate={{ y: 8, opacity: 1 }}
+        transition={{ repeat: Infinity, repeatType: "reverse", duration: 1.2 }}
+        className="mx-auto mt-1 h-8 w-4 rounded-full border-2 border-slate-700/50"
+      >
+        <div className="mx-auto mt-1 h-2 w-2 rounded-full bg-slate-700/70" />
+      </motion.div>
+    </div>
+  );
+}
+
+function NoiseOverlay() {
+  return (
+    <svg className="absolute inset-0 w-full h-full opacity-[.06]" aria-hidden="true">
+      <filter id="n" x="0" y="0">
+        <feTurbulence type="fractalNoise" baseFrequency="" numOctaves="4" stitchTiles="stitch" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#n)" />
+    </svg>
+  );
+}
+
+function PalmBackdrop() {
+  return (
+    <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
+      <defs>
+        <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#10b981" stopOpacity="0.20"/>
+          <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.10"/>
+        </linearGradient>
+      </defs>
+      {Array.from({length: 6}).map((_,i)=> (
+        <g key={i} transform={`translate(${i%2?80:-40},${i*120 - 60}) rotate(${i%2?20:-15})`} opacity="0.22">
+          {[...Array(8)].map((__,j)=> (
+            <path key={j} d={`M${j*22},0 C${j*22+4},20 ${j*22+10},40 ${j*22+16},60`} stroke="url(#leaf)" strokeWidth="10" strokeLinecap="round" fill="none"/>
+          ))}
+        </g>
+      ))}
+    </svg>
+  );
+}
