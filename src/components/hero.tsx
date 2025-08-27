@@ -7,6 +7,7 @@ import {
   Plane,
   ShieldAlert,
   Wallet,
+  ArrowRight,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
@@ -22,10 +23,12 @@ export default function Hero() {
         <div className="flex justify-left mb-8">
           <Badge
             variant="outline"
-            className="inline-flex items-center px-8 py-2.5 rounded-full text-sm font-medium text-primary-color border border-primary-color"
+            className="inline-flex items-center px-8 py-2.5 rounded-full text-base font-medium text-primary-color border border-primary-color"
             data-testid="badge-afribbean-airlines"
           >
-            Afribbean Airlines
+            <span className="inline-flex items-center gap-2">
+              <Plane className="size-3" /> Nonstop is the new bridge
+            </span>
           </Badge>
         </div>
 
@@ -36,10 +39,15 @@ export default function Hero() {
             data-testid="headline"
           >
             Directly connecting the{" "}
-            <span className="text-primary-color">Caribbean</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
+              Caribbean
+            </span>
+            ,
             <br />
             <span className="green-blue-grad">Africa</span> and{" "}
-            <span className="orange-grad">South Africa</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600">
+              South Africa
+            </span>
           </h1>
           <p
             className="text-lg text-gray leading-relaxed"
@@ -50,6 +58,21 @@ export default function Hero() {
             together with efficient, sustainable, direct routes that turn long
             detours into same-day journeys.
           </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#waitlist"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-2.5 text-white font-semibold shadow hover:bg-emerald-700 transition-colors duration-300 cursor-pointer"
+            >
+              Get Early Access <ArrowRight className="size-4" />
+            </a>
+            <a
+              href="#network"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-2.5 text-emerald-700 font-semibold ring-1 ring-emerald-200 hover:bg-emerald-50 transition-colors duration-300 cursor-pointer"
+            >
+              See Route Vision
+            </a>
+          </div>
         </div>
 
         {/* Feature Badges */}
@@ -97,7 +120,7 @@ export default function Hero() {
         >
           <div className="h-full w-full flex justify-center items-center">
             <Image
-              src="/images/hero.png"
+              src="/images/hero.svg"
               alt="hero"
               width={100}
               height={100}
