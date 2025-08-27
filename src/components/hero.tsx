@@ -27,7 +27,7 @@ export default function Hero() {
             data-testid="badge-afribbean-airlines"
           >
             <span className="inline-flex items-center gap-2">
-              <Plane className="size-3" /> Nonstop is the new bridge
+              <Plane className="size-5" /> Nonstop is the new bridge
             </span>
           </Badge>
         </div>
