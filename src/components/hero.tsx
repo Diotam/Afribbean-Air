@@ -46,7 +46,7 @@ export default function Hero() {
             <br />
             <span className="green-blue-grad">Africa</span> and{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600">
-              South Africa
+              South America
             </span>
           </h1>
           <p
