@@ -528,8 +528,13 @@ export default function DestinationCards() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-col gap-3">
-            <Tabs value={region} onValueChange={(v: any) => setRegion(v)}>
+          <div className="mt-6 flex flex-col gap-3 pb-6">
+            <Tabs
+              value={region}
+              onValueChange={(v: string) =>
+                setRegion(v as (typeof regions)[number])
+              }
+            >
               <TabsList className="bg-white/80 backdrop-blur">
                 {regions.map((r) => (
                   <TabsTrigger key={r} value={r}>
@@ -558,7 +563,7 @@ export default function DestinationCards() {
         </motion.div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-24 text-slate-600">
+          <div className="text-center py-24 text-gray">
             No matches. Try a different search or region.
           </div>
         )}

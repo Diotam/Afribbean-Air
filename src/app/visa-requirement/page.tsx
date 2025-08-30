@@ -312,14 +312,16 @@ async function fetchWikiTable(nationality: string): Promise<{
   const ck = `visa.wiki.table.${slug}`;
   const tsK = `visa.wiki.table.${slug}.ts`;
   try {
-    const cached = localStorage.getItem(ck);
-    const ts = localStorage.getItem(tsK);
-    if (
-      cached &&
-      ts &&
-      Date.now() - Number(ts) < CACHE_MAX_AGE_DAYS * 86400_000
-    ) {
-      return { map: JSON.parse(cached), fetchedAt: Number(ts) };
+    if (typeof window !== "undefined") {
+      const cached = localStorage.getItem(ck);
+      const ts = localStorage.getItem(tsK);
+      if (
+        cached &&
+        ts &&
+        Date.now() - Number(ts) < CACHE_MAX_AGE_DAYS * 86400_000
+      ) {
+        return { map: JSON.parse(cached), fetchedAt: Number(ts) };
+      }
     }
   } catch {}
   const title = `Visa_requirements_for_${slug}_citizens`;
@@ -350,8 +352,10 @@ async function fetchWikiTable(nationality: string): Promise<{
   }
   const now = Date.now();
   try {
-    localStorage.setItem(`visa.wiki.table.${slug}`, JSON.stringify(map));
-    localStorage.setItem(`visa.wiki.table.${slug}.ts`, String(now));
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`visa.wiki.table.${slug}`, JSON.stringify(map));
+      localStorage.setItem(`visa.wiki.table.${slug}.ts`, String(now));
+    }
   } catch {}
   return { map, fetchedAt: now };
 }
@@ -368,7 +372,10 @@ function getUsageKey(role: "from" | "to") {
 }
 function loadUsage(role: "from" | "to"): Record<string, number> {
   try {
-    return JSON.parse(localStorage.getItem(getUsageKey(role)) || "{}");
+    if (typeof window !== "undefined") {
+      return JSON.parse(localStorage.getItem(getUsageKey(role)) || "{}");
+    }
+    return {};
   } catch {
     return {};
   }
@@ -376,7 +383,9 @@ function loadUsage(role: "from" | "to"): Record<string, number> {
 function bumpUsage(role: "from" | "to", code: string) {
   const map = loadUsage(role);
   map[code] = (map[code] || 0) + 1;
-  localStorage.setItem(getUsageKey(role), JSON.stringify(map));
+  if (typeof window !== "undefined") {
+    localStorage.setItem(getUsageKey(role), JSON.stringify(map));
+  }
 }
 
 function sortWithUsage(options: Option[], role: "from" | "to") {
@@ -389,17 +398,26 @@ function sortWithUsage(options: Option[], role: "from" | "to") {
   });
 }
 
-export default function page() {
+export default function Page() {
   const [fromCode, setFromCode] = useState("");
   const [toCode, setToCode] = useState("");
   const [rule, setRule] = useState<Rule | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ts, setTs] = useState<string | null>(null);
-  const dark = useMemo(() => localStorage.getItem("visa.theme") === "dark", []);
-  const [compact, setCompact] = useState<boolean>(
-    () => localStorage.getItem("visa.compact") === "1"
-  );
+  const dark = useMemo(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("visa.theme") === "dark";
+    }
+    return false;
+  }, []);
+  const [compact, setCompact] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCompact(localStorage.getItem("visa.compact") === "1");
+    }
+  }, []);
   const [usageVersion, setUsageVersion] = useState(0);
   const lastBumpedRef = useRef<string>("");
 
@@ -463,7 +481,9 @@ export default function page() {
   function toggleCompact() {
     const n = !compact;
     setCompact(n);
-    localStorage.setItem("visa.compact", n ? "1" : "0");
+    if (typeof window !== "undefined") {
+      localStorage.setItem("visa.compact", n ? "1" : "0");
+    }
   }
 
   return (
