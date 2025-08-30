@@ -6,6 +6,7 @@ import Advantages from "@/components/advantages";
 import Network from "@/components/network";
 import Comfort from "@/components/comfort";
 import Footer from "@/components/footer";
+import DestinationCards from "@/components/DestinationCards";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <Problems />
       <Advantages />
+      <DestinationCards />
       <Network />
       <Comfort />
       <Footer />

@@ -33,7 +33,7 @@ export default function Network() {
   return (
     <section
       id="network"
-      className="pb-14 lg:pb-16"
+      className="py-14 lg:py-16"
       data-testid="network-section"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

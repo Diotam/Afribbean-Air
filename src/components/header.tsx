@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Globe, Menu, ArrowRight, MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const router = useRouter();
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -31,12 +33,14 @@ export default function Header() {
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center" data-testid="logo">
               <div className="w-16 h-16 md:w-22 md:h-22 mr-3">
-                <Image
-                  src="/images/logo.svg"
-                  alt="logo"
-                  width={100}
-                  height={100}
-                />
+                <Link href="/">
+                  <Image
+                    src="/images/logo.svg"
+                    alt="logo"
+                    width={100}
+                    height={100}
+                  />
+                </Link>
               </div>
               <div>
                 <h1 className="font-semibold text-black">Afribbean Air</h1>
@@ -51,31 +55,38 @@ export default function Header() {
           <nav className="hidden md:flex space-x-8" data-testid="navigation">
             <button
               onClick={() => scrollToSection("problem")}
-              className="text-gray hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors cursor-pointer"
+              className="text-gray hover:text-gray-900  text-sm font-medium transition-colors cursor-pointer"
               data-testid="nav-problem"
             >
               Problem
             </button>
             <button
               onClick={() => scrollToSection("benefits")}
-              className="text-gray hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors cursor-pointer"
+              className="text-gray hover:text-gray-900  text-sm font-medium transition-colors cursor-pointer"
               data-testid="nav-benefits"
             >
               Benefits
             </button>
             <button
               onClick={() => scrollToSection("network")}
-              className="text-gray hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors cursor-pointer"
+              className="text-gray hover:text-gray-900  text-sm font-medium transition-colors cursor-pointer"
               data-testid="nav-network"
             >
               Network
             </button>
             <button
               onClick={() => scrollToSection("experience")}
-              className="text-gray hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors cursor-pointer"
+              className="text-gray hover:text-gray-900  text-sm font-medium transition-colors cursor-pointer"
               data-testid="nav-experience"
             >
               Experience
+            </button>
+            <button
+              onClick={() => router.push("/visa-requirement")}
+              className="text-gray hover:text-gray-900  text-sm font-medium transition-colors cursor-pointer"
+              data-testid="nav-visa-requirement"
+            >
+              Visa Requirements
             </button>
           </nav>
 
@@ -153,6 +164,16 @@ export default function Header() {
               data-testid="mobile-nav-experience"
             >
               Experience
+            </button>
+            <button
+              onClick={() => {
+                router.push("/visa-requirement");
+                setMobileMenuOpen(false);
+              }}
+              className="text-gray hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors text-left cursor-pointer"
+              data-testid="mobile-nav-visa-requirement"
+            >
+              Visa Requirements
             </button>
           </div>
         </div>
