@@ -446,7 +446,7 @@ function DestinationCard({ d }: { d: Destination }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
     >
-      <Card className="h-full overflow-hidden rounded-2xl shadow-lg border-0 bg-gradient-to-b from-white to-sky-50">
+      <Card className="h-full p-0 overflow-hidden rounded-2xl shadow-lg border-0 bg-gradient-to-b from-white to-sky-50">
         <div className="relative aspect-[3/2] bg-slate-100">
           {imgOk ? (
             <img
@@ -488,7 +488,7 @@ function DestinationCard({ d }: { d: Destination }) {
               </Badge>
             ))}
           </div>
-          <ul className="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-1">
+          <ul className="mt-3 text-base text-slate-700 list-disc pl-5 space-y-1">
             {d.attractions.slice(0, 3).map((a) => (
               <li key={a.name}>
                 <span className="font-medium">{a.name}:</span> {a.blurb}
