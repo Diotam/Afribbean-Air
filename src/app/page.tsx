@@ -7,6 +7,7 @@ import Network from "@/components/network";
 import Comfort from "@/components/comfort";
 import Footer from "@/components/footer";
 import DestinationCards from "@/components/DestinationCards";
+import About from "@/components/About";
 
 export default function Home() {
   return (
@@ -16,8 +17,9 @@ export default function Home() {
       <Problems />
       <Advantages />
       <DestinationCards />
-      <Network />
-      <Comfort />
+      <About />
+      {/* <Network />
+      <Comfort /> */}
       <Footer />
     </div>
   );
