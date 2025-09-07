@@ -13,8 +13,8 @@ function About() {
               About Afribbean Air
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're more than an airline – we're the bridge connecting three
-              vibrant continents with shared heritage and bright futures
+              {`We're more than an airline – we're the bridge connecting three
+              vibrant continents with shared heritage and bright futures`}
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
@@ -36,11 +36,11 @@ function About() {
                   these connections expensive and exhausting.
                 </p>
                 <p>
-                  We changed that. By establishing the first direct routes
+                  {`We changed that. By establishing the first direct routes
                   connecting these three regions, we've created a transportation
                   revolution that serves millions of people across the African
                   diaspora and opens new opportunities for trade, tourism, and
-                  cultural exchange.
+                  cultural exchange.`}
                 </p>
               </div>
             </div>
@@ -157,9 +157,9 @@ function About() {
                   Innovation Driven
                 </h4>
                 <p className="text-gray-600 leading-relaxed">
-                  By pioneering direct routes where others saw impossible
+                  {`By pioneering direct routes where others saw impossible
                   connections, we're revolutionizing travel between three
-                  dynamic regions.
+                  dynamic regions.`}
                 </p>
               </div>
               <div className="text-center space-y-4">
