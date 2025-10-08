@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Afribbean Airlines",
-  description: "Afribbean Airlines",
+  description: "Afribbean Airlines.",
 };
 
 export default function RootLayout({
