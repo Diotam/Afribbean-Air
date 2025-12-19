@@ -42,7 +42,6 @@ export default function Hero() {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
               Caribbean
             </span>
-            ,
             <br />
             <span className="green-blue-grad">Africa</span> and{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-orange-600">
