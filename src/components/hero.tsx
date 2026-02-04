@@ -19,7 +19,7 @@ export default function Hero() {
       data-testid="hero-section"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Badge */}
+        {/* Badge - */}
         <div className="flex justify-left mb-8">
           <Badge
             variant="outline"
